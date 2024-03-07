@@ -1,0 +1,4 @@
+easyocr
+tqdm
+onnx
+onnxruntime
