@@ -13,11 +13,11 @@ class CFG:
     #Detector + Recognizer
     decoder: str = 'greedy' # TODO Literal
     # recog_network: str = 'generation2'
-    lang: List[str] = ['ru']
-    character: str = '0123456789!"#$%№&\'()*,-./:;<=>?[\\]+ €₽АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя'
-    ignore_char: str = '!"#$%№&\'()*,-./:;<=>?[\\] €₽АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя'
+    lang: List[str] = ['en','ru']
+    character: str = '0123456789!"#$%№&\'()*,-./:;<=>?[\\]+ €₽АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюяABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+    ignore_char: str = ''
     # ignore_char: str = '0123456789'
-    allowlist: str = '0123456789'
+    allowlist: str = '0123456789+:АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюяABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
 
     # important parameters
     beamWidth = 5
