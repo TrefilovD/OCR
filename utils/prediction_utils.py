@@ -11,13 +11,22 @@ def postproccesing(result, thresh):
 
         # sim = is_similarity(text,  mark_words, similarity_thresh)
         # if sim: continue
-        if "+" in text: continue
+        if "+" in text or ":" in text: continue
+        len_text = len(text)
+        cur_pos = -1
         for txt in text.split(" "):
+            cur_pos += 1
+            cur_step = len(txt)
             txt = txt.strip()
             # print(txt, len(txt), txt.isdigit())
-            filtered_txt = "".join(list(filter(lambda x: x.isdigit(), txt)))
-            if filtered_txt.isdigit() and  abs(10 - len(filtered_txt)) <= 0 and abs(len(filtered_txt) - len(txt)) <= 2:
+            filtered_txt = "".join(list(filter(lambda x: not x.isalpha(), txt)))
+            if "47" == filtered_txt[:2]: break
+            if filtered_txt.isdigit() and  abs(10 - len(filtered_txt)) <= 1 and abs(len(filtered_txt) - len(txt)) <= 2:
+                w = coord[1, 0] - coord[0, 0]
+                coord[0, 0] += int(w * (cur_pos / len_text))
+                coord[-1, 0] += int(w * (cur_pos / len_text))
                 new_result.append([coord, filtered_txt, prob])
+            cur_pos += cur_step
 
     return new_result
 
