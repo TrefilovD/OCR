@@ -125,7 +125,7 @@ class InferenceONNX:
 
         postproccesing_time = time.time()
         result_cp = pred_post(result_cp, CFG.threshold)
-        result_cp = sorted(result_cp, key=lambda x: [x[0][1][1], x[0][1][0]])
+        result_cp = sorted(result_cp, key=lambda x: [x[0][1][1], x[0][1][0]])[:1]
         postproccesing_time = time.time() - postproccesing_time
         print("postproccesing_time", postproccesing_time)
 
