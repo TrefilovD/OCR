@@ -22,12 +22,12 @@ class CFG:
     # important parameters
     beamWidth = 5
     text_threshold: float = 0.2
-    link_threshold: float = 0.3
+    link_threshold: float = 0.15
     low_text: float = 0.4
     contrast_ths = 0.1
     adjust_contrast = 0.5
     filter_ths = 0.003
-    threshold: float = 0.25
+    threshold: float = 0.2
     width_ths: float = 0.1
     optimal_num_chars: int = 10
 
@@ -37,7 +37,7 @@ class CFG:
     mag_ratio: float = 1
     slope_ths: float = 0.1
     ycenter_ths: float = 0.5
-    height_ths: float = 0.5
+    height_ths: float = 0.75
     y_ths: float = 0.5
     x_ths: float = 1
     add_margin: float = 0.1
