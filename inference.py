@@ -85,21 +85,23 @@ class InferenceONNX:
             use_classification (bool): флаг для предварительной классификации документа
             doc_type (Optional[int]): номер документа. Необязательный параметр.
         """
-        start_det_time = time.time()
         # Classification inference
         if doc_type:
             image_region, offset = get_region_by_doc_type(image, doc_type)
         elif use_classification:
+            classification_time = time.time()
             input_name = self.classificator_session.get_inputs()[0].name
             input_shape = self.classificator_session.get_inputs()[0].shape[-2:]
             inp = {input_name: classification_preproccesing(image, input_shape)}
             out_onnx_classificator = self.classificator_session.run(None, inp)
 
             image_region, offset = get_region_by_doc_type(image, out_onnx_classificator[0][0].argmax())
+            print("classificator time: ", time.time() - classification_time)
         else:
             image_region = image.copy()
             offset = np.array([0, 0])
 
+        start_det_time = time.time()
         img, inp, ratios = preproccesing(image_region, CFG.resize_square, CFG.mag_ratio)
 
         # Prepare input tensor for inference
