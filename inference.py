@@ -112,8 +112,8 @@ class InferenceONNX:
         try:
             boxes, polys, mapper, crops = postproccesing(out_onnx_detector, img, ratios, CFG.text_threshold, CFG.link_threshold, CFG.low_text)
         except:
-            print(f"Warning!!! Failed detector postproccesing")
-            return None
+            boxes = []
+            crops = []
 
         print("detector time: ", time.time() - start_det_time)
 
@@ -161,11 +161,11 @@ class InferenceONNX:
         postproccesing_time = time.time() - postproccesing_time
         print("postproccesing_time", postproccesing_time)
 
-        for i in range(len(result_cp)):
-            result_cp[i][0] += offset
+        for i in range(len(result_cp_p)):
+            result_cp_p[i][0] += offset
 
         if show:
-            save_detecting(result_cp_p, image_region, save_path)
+            save_detecting(result_cp_p, image, save_path)
         save_results(result_cp_p, save_path)
 
 def parse():
