@@ -3,7 +3,7 @@
 ## Installation
 
 ```
-git clone https://github.com/JaidedAI/EasyOCR.git
+git clone git@github.com:JaidedAI/EasyOCR.git
 cd EasyOCR.git
 pip install .
 pip install onnx onnxruntime
@@ -20,6 +20,3 @@ pip install -r requirements.txt
   - easyocr
 
 </details>
-
-## How To Run?
-
