@@ -1,3 +1,4 @@
+import math
 from typing import Dict, Tuple
 
 import cv2
@@ -7,37 +8,34 @@ class DocumentType:
     types: Dict[int, Tuple[int, int, int]]
 
 def get_region_by_doc_type(image: np.ndarray, doc_type: int) -> np.ndarray:
-    """_summary_
+    """Метод возвращает определенную область изобржения, по ее типу. Поддерживается 3 типа документов.
 
     Args:
-        image (np.ndarray): _description_
-        doc_type (int): _description_
-
-    Raises:
-        ValueError: _description_
+        image (np.ndarray): одноканальное изображение
+        doc_type (int): тип документа
 
     Returns:
         Tuple[
-            np.ndarray: _description_
-            np.ndarray: _description_
+            np.ndarray: область изобржения
+            np.ndarray: начальные координаты окна на исходном изображении
         ]
     """
     h, w = image.shape[-2:]
     if doc_type == 0:
         image = image[100:300, :int(w // 1.75)]
-        new_shape = (600, int(w // 1.75))
+        new_shape = (600, image.shape[1])
         new_image = (np.ones(new_shape) * 255).astype(np.uint8)
         new_image[:200, :] = image
         return new_image, np.array([0, 100])
     elif doc_type == 1:
         image = image[100:300, :w // 2]
-        new_shape = (600, w // 2)
+        new_shape = (600, image.shape[1])
         new_image = (np.ones(new_shape) * 255).astype(np.uint8)
         new_image[:200, :] = image
         return new_image, np.array([0, 100])
     elif doc_type == 2:
         image = image[100:300, w // 2:]
-        new_shape = (600, w // 2)
+        new_shape = (600, image.shape[1])
         new_image = (np.ones(new_shape) * 255).astype(np.uint8)
         new_image[:200, :] = image
         return new_image, np.array([w // 2, 100])
