@@ -15,7 +15,8 @@ def preproccesing(
         resize_square: int,
         mag_ratio: float
     ) -> Tuple[np.ndarray, np.ndarray, Tuple[int, int]]:
-    img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    if len(img.shape) > 2:
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     # Read input image
     img = img[:img.shape[0] // 2, :]
     img, _ = reformat_input(img)

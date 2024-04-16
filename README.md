@@ -1,25 +1,18 @@
 # OCR solution based on EasyOCR (https://github.com/JaidedAI/EasyOCR.git)
 
-## Installation
+## Setup Project
 
-```
-git clone https://github.com/JaidedAI/EasyOCR.git
-cd EasyOCR.git
-pip install .
-pip install onnx onnxruntime
-
-or
-
-pip install -r requirements.txt
-```
+1. Install python-poetry (https://python-poetry.org/docs/#installation)
+2. Execute building environment<br>
+`poetry install`
 
 <details>
   <summary> Dependencies (click to expand) </summary>
 
   ## Dependencies
   - easyocr
+  - tqdm
+  - onnx
+  - onnxruntime
 
 </details>
-
-## How To Run?
-
